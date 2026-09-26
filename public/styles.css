@@ -1,156 +1,77 @@
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام سجل الحضور</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>سجل الحضور</h1>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6fb;
-  color: #1d2433;
-}
+        <section>
+          <h2>إضافة فصل</h2>
+          <form id="classForm" class="stack-form">
+            <input type="text" id="className" placeholder="اسم الفصل" required />
+            <button type="submit">إضافة فصل</button>
+          </form>
+        </section>
 
-button,
-input,
-select {
-  font: inherit;
-}
+        <section>
+          <h2>إضافة طالب</h2>
+          <form id="studentForm" class="stack-form">
+            <select id="studentClassSelect" required></select>
+            <input type="text" id="studentName" placeholder="اسم الطالب" required />
+            <input type="text" id="rollNumber" placeholder="رقم القائمة" required />
+            <button type="submit">إضافة طالب</button>
+          </form>
+        </section>
+      </aside>
 
-.app-shell {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  min-height: 100vh;
-}
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h2>معهد الشروق</h2>
+          </div>
+          <div class="date-box">
+            <label for="attendanceDate">التاريخ</label>
+            <input type="date" id="attendanceDate" />
+          </div>
+        </header>
 
-.sidebar {
-  background: #132238;
-  color: #fff;
-  padding: 24px 18px;
-}
+        <section class="class-picker">
+          <label for="classSelect">اختر الفصل</label>
+          <select id="classSelect"></select>
+        </section>
 
-.sidebar h1,
-.sidebar h2,
-.main-content h2,
-.main-content h3 {
-  margin-top: 0;
-}
+        <section class="attendance-panel">
+          <div class="attendance-header">
+            <h3>قائمة الطلاب</h3>
+            <button id="saveAttendanceBtn">حفظ الحضور</button>
+          </div>
 
-.sidebar section {
-  margin-top: 32px;
-}
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>اسم الطالب</th>
+                  <th>رقم القائمة</th>
+                  <th>حاضر</th>
+                  <th>غائب</th>
+                  <th>متأخر</th>
+                  <th>ملاحظات</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
 
-.stack-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #d8deea;
-}
-
-button {
-  background: #2f80ed;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-button:hover {
-  background: #2667c2;
-}
-
-.main-content {
-  padding: 30px;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 18px;
-  margin-bottom: 22px;
-}
-
-.date-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 180px;
-}
-
-.class-picker {
-  margin-bottom: 22px;
-}
-
-.attendance-panel {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(19, 34, 56, 0.08);
-  padding: 18px;
-}
-
-.attendance-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.table-wrap {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border-bottom: 1px solid #e9edf5;
-  padding: 12px 10px;
-  text-align: left;
-}
-
-th {
-  background: #f6f9ff;
-}
-
-.status-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.status-group label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-}
-
-.notes-input {
-  min-width: 120px;
-}
-
-@media (max-width: 900px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    padding-bottom: 10px;
-  }
-
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+    <script src="/app.js"></script>
+  </body>
+</html>
