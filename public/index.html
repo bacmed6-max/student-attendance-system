@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Attendance System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>Attendance</h1>
+
+        <section>
+          <h2>Add Class</h2>
+          <form id="classForm" class="stack-form">
+            <input type="text" id="className" placeholder="Class name" required />
+            <button type="submit">Add Class</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Add Student</h2>
+          <form id="studentForm" class="stack-form">
+            <select id="studentClassSelect" required></select>
+            <input type="text" id="studentName" placeholder="Student name" required />
+            <input type="text" id="rollNumber" placeholder="Roll number" required />
+            <button type="submit">Add Student</button>
+          </form>
+        </section>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h2>Institute Attendance</h2>
+          </div>
+          <div class="date-box">
+            <label for="attendanceDate">Date</label>
+            <input type="date" id="attendanceDate" />
+          </div>
+        </header>
+
+        <section class="class-picker">
+          <label for="classSelect">Select Class</label>
+          <select id="classSelect"></select>
+        </section>
+
+        <section class="attendance-panel">
+          <div class="attendance-header">
+            <h3>Students List</h3>
+            <button id="saveAttendanceBtn">Save Attendance</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Roll</th>
+                  <th>Present</th>
+                  <th>Absent</th>
+                  <th>Late</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
