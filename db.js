@@ -57,11 +57,12 @@ function initDatabase(callback) {
       (1, 'Noura Salem', '04')
     `);
 
-    callback();
+    if (typeof callback === 'function') {
+      callback();
+    }
   });
 }
 
-module.exports = {
-  db,
-  initDatabase
-};
+db.initDatabase = initDatabase;
+
+module.exports = db;
